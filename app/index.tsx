@@ -18,7 +18,7 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <View className="flex-1 bg-background text-muted-foreground pt-16 px-3">
+    <View className="flex-1 bg-background text-muted-foreground pt-16 px-2">
       {isLoading ? (
         <ActivityIndicator style={{ marginTop: 16 }} size="large" />
       ) : modules.length === 0 ? (
@@ -40,7 +40,7 @@ export default function HomeScreen() {
             )}
             onRefresh={reload}
             refreshing={isLoading}
-            contentContainerStyle={{ paddingBottom: 80 }}
+            contentContainerStyle={{ paddingBottom: 80, gap: 10 }}
           />
           <FAB
             className="absolute right-4 bottom-4 bg-primary"

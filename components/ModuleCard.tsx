@@ -8,10 +8,7 @@ interface Props {
 }
 
 const ModuleCard: React.FC<Props> = ({ module, onPress }) => (
-  <TouchableOpacity
-    onPress={onPress}
-    className="bg-card py-6 px-6 rounded-2xl mt-3"
-  >
+  <TouchableOpacity onPress={onPress} className="bg-card py-6 px-6 rounded-2xl">
     <Text className="text-foreground text-2xl font-semibold">
       {module.name}
     </Text>
