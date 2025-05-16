@@ -1,6 +1,7 @@
 import { Stack } from "expo-router";
 import React from "react";
 import Providers from "./_providers";
+import "./global.css";
 
 // Root layout must default-export a React component
 export default function Layout() {

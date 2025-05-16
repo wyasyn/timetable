@@ -10,10 +10,10 @@ interface Props {
 const ModuleCard: React.FC<Props> = ({ module, onPress }) => (
   <TouchableOpacity
     onPress={onPress}
-    style={{ padding: 16, borderBottomWidth: 1 }}
+    className="bg-slate-800 text-slate-100 py-6 px-3 rounded-lg mt-3"
   >
-    <Text style={{ fontSize: 18 }}>{module.name}</Text>
-    <Text>
+    <Text className="text-stone-100 text-lg">{module.name}</Text>
+    <Text className="text-stone-400">
       {module.date} {module.time}
     </Text>
   </TouchableOpacity>

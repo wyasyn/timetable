@@ -18,7 +18,7 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View className="bg-stone-900 text-slate-200 flex-1 pt-16 px-4">
       {isLoading ? (
         <ActivityIndicator style={{ marginTop: 16 }} size="large" />
       ) : modules.length === 0 ? (
