@@ -44,10 +44,7 @@ export default function AddModuleScreen() {
           label="Name"
           value={name}
           onChangeText={setName}
-          style={{
-            marginBottom: 10,
-          }}
-          className="bg-card text-muted-foreground  border-stone-500"
+          className="bg-secondary text-white"
         />
 
         <Button mode="outlined" onPress={() => setShowDate(true)}>

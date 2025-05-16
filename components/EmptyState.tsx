@@ -1,6 +1,6 @@
 // src/components/EmptyState.tsx
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { Button, IconButton, Text, useTheme } from "react-native-paper";
 
 interface EmptyStateProps {
@@ -17,41 +17,16 @@ export default function EmptyState({
   const { colors } = useTheme();
 
   return (
-    <View style={styles.container}>
-      <IconButton
-        icon="timetable"
-        size={64}
-        iconColor={colors.onSurfaceDisabled}
-        style={styles.icon}
-      />
-      <Text style={[styles.message, { color: colors.onSurfaceDisabled }]}>
+    <View className="flex-1 items-center justify-center text-white">
+      <IconButton icon="timetable" size={64} iconColor={colors.surface} />
+      <Text className="text-lg my-8" style={{ color: colors.surface }}>
         {message}
       </Text>
       {onAction && (
-        <Button mode="contained" onPress={onAction} style={styles.button}>
+        <Button mode="contained" onPress={onAction}>
           {actionLabel}
         </Button>
       )}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 24,
-  },
-  icon: {
-    marginBottom: 16,
-  },
-  message: {
-    fontSize: 18,
-    textAlign: "center",
-    marginBottom: 24,
-  },
-  button: {
-    marginTop: 8,
-  },
-});
