@@ -6,13 +6,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#000000",
-        secondary: "#141414",
-        foreground: "#f0f0f0",
-        muted: "#7f7f7f",
-        card: "#292929",
-        primary: "#0b63e5",
-        "muted-foreground": "#9d9d9d",
+        background: "#06202B",
+        secondary: "#077A7D",
+        foreground: "#09122C",
+        muted: "#574964",
+        card: "#7AE2CF",
+        primary: "#003092",
+        "muted-foreground": "#1D1616",
       },
     },
   },

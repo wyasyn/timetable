@@ -1,13 +1,9 @@
 // app/details/[id].tsx
+import BackButton from "@/components/BackButton";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { Alert, ScrollView } from "react-native";
-import {
-  ActivityIndicator,
-  Button,
-  RadioButton,
-  Text,
-} from "react-native-paper";
+import { Alert, ScrollView, Text } from "react-native";
+import { ActivityIndicator, Button, RadioButton } from "react-native-paper";
 import { useModules } from "../../context/ModuleContext";
 import { Module } from "../../types/module";
 
@@ -57,21 +53,45 @@ export default function ModuleDetailScreen() {
   }
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 16 }}>
-      <Text variant="headlineSmall" style={{ marginBottom: 12 }}>
+    <ScrollView
+      contentContainerStyle={{ padding: 16 }}
+      className="bg-background pt-14"
+    >
+      <BackButton />
+      <Text className="text-white text-3xl mt-4 mb-4 font-semibold capitalize">
         {module.name}
       </Text>
-      <Text>Date: {module.date}</Text>
-      <Text>Time: {module.time}</Text>
-      <Text>Location: {module.location}</Text>
-      <Text>Supervisor: {module.supervisor}</Text>
+      <Text className="text-stone-300 text-lg mb-4">Date: {module.date}</Text>
+      <Text className="text-stone-300 text-lg mb-4">Time: {module.time}</Text>
+      <Text className="text-stone-300 text-lg mb-4">
+        Location: {module.location}
+      </Text>
+      <Text className="text-stone-300 text-lg mb-4">
+        Supervisor: {module.supervisor}
+      </Text>
       {module.notes?.length ? (
-        <Text style={{ marginTop: 8 }}>Notes: {module.notes}</Text>
+        <Text className="text-stone-300 text-lg mb-4">
+          Notes: {module.notes}
+        </Text>
       ) : null}
 
       <RadioButton.Group onValueChange={onToggleStatus} value={module.status}>
-        <RadioButton.Item label="Pending" value="pending" />
-        <RadioButton.Item label="Completed" value="completed" />
+        <RadioButton.Item
+          color="#fff"
+          labelStyle={{
+            color: "white",
+          }}
+          label="Pending"
+          value="pending"
+        />
+        <RadioButton.Item
+          color="#fff"
+          labelStyle={{
+            color: "white",
+          }}
+          label="Completed"
+          value="completed"
+        />
       </RadioButton.Group>
 
       <Button

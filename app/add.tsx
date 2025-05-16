@@ -1,9 +1,16 @@
 // app/add.tsx
+import BackButton from "@/components/BackButton";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { ScrollView, View } from "react-native";
-import { ActivityIndicator, Button, TextInput } from "react-native-paper";
+import {
+  ActivityIndicator,
+  Button,
+  ScrollView,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { useModules } from "../context/ModuleContext";
 import { ModuleStatus } from "../types/module";
 
@@ -40,16 +47,24 @@ export default function AddModuleScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ padding: 16, minHeight: "100%" }}
       >
+        <BackButton />
         <TextInput
-          label="Name"
+          placeholder="Name"
           value={name}
           onChangeText={setName}
-          className="bg-secondary text-white"
+          className="bg-secondary text-lg rounded-lg px-4 py-2 mb-6  placeholder:text-stone-300"
         />
+        <View className="flex-row justify-between items-center gap-4 mb-6">
+          <Text className="text-white text-lg">
+            {date.toLocaleDateString()}
+          </Text>
+          <Button
+            color={"#5409DA"}
+            title={"Pick a date"}
+            onPress={() => setShowDate(true)}
+          />
+        </View>
 
-        <Button mode="outlined" onPress={() => setShowDate(true)}>
-          Pick Date
-        </Button>
         {showDate && (
           <DateTimePicker
             value={date}
@@ -61,16 +76,21 @@ export default function AddModuleScreen() {
             }}
           />
         )}
-        <TextInput
-          label="Selected Date"
-          value={date.toLocaleDateString()}
-          editable={false}
-          style={{ marginVertical: 12 }}
-        />
 
-        <Button mode="outlined" onPress={() => setShowTime(true)}>
-          Pick Time
-        </Button>
+        <View className="flex-row justify-between items-center gap-4 mb-6">
+          <Text className="text-white text-lg">
+            {time.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </Text>
+          <Button
+            color={"#5409DA"}
+            title="Pick Time"
+            onPress={() => setShowTime(true)}
+          />
+        </View>
+
         {showTime && (
           <DateTimePicker
             value={time}
@@ -82,42 +102,31 @@ export default function AddModuleScreen() {
             }}
           />
         )}
-        <TextInput
-          label="Selected Time"
-          value={time.toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}
-          editable={false}
-          style={{ marginVertical: 12 }}
-        />
 
         <TextInput
-          label="Location"
+          placeholder="Location"
           value={location}
           onChangeText={setLocation}
-          style={{ marginBottom: 12 }}
+          className="bg-secondary text-lg rounded-lg px-4 py-2 mb-6  placeholder:text-stone-300"
         />
         <TextInput
-          label="Supervisor"
+          placeholder="Supervisor"
           value={supervisor}
           onChangeText={setSupervisor}
-          style={{ marginBottom: 12 }}
+          className="bg-secondary text-lg rounded-lg px-4 py-2 mb-6  placeholder:text-stone-300"
         />
         <TextInput
-          label="Notes"
+          placeholder="Notes"
           value={notes}
           onChangeText={setNotes}
           multiline
-          style={{ marginBottom: 16 }}
+          className="bg-secondary text-lg rounded-lg px-4 py-2 mb-6  placeholder:text-stone-300"
         />
 
         {isLoading ? (
           <ActivityIndicator size="large" style={{ marginTop: 16 }} />
         ) : (
-          <Button mode="contained" onPress={onSave}>
-            Save
-          </Button>
+          <Button color={"#5409DA"} title="Save" onPress={onSave} />
         )}
       </ScrollView>
     </View>

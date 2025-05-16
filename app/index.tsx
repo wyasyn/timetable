@@ -2,7 +2,7 @@
 import EmptyState from "@/components/EmptyState";
 import { useRouter } from "expo-router";
 import React, { useEffect } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import { ActivityIndicator, FAB } from "react-native-paper";
 import ModuleCard from "../components/ModuleCard";
 import { useModules } from "../context/ModuleContext";
@@ -18,7 +18,10 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <View className="flex-1 bg-background text-muted-foreground pt-16 px-2">
+    <View className="flex-1 bg-background text-muted-foreground pt-20 px-3">
+      <Text className="text-4xl mb-8 text-stone-200 font-semibold">
+        Timetable
+      </Text>
       {isLoading ? (
         <ActivityIndicator style={{ marginTop: 16 }} size="large" />
       ) : modules.length === 0 ? (
