@@ -18,7 +18,7 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <View className="bg-stone-900 text-slate-200 flex-1 pt-16 px-4">
+    <View className="flex-1 bg-background text-muted-foreground pt-16 px-3">
       {isLoading ? (
         <ActivityIndicator style={{ marginTop: 16 }} size="large" />
       ) : modules.length === 0 ? (
@@ -43,12 +43,9 @@ export default function HomeScreen() {
             contentContainerStyle={{ paddingBottom: 80 }}
           />
           <FAB
-            style={{
-              position: "absolute",
-              right: 16,
-              bottom: 16,
-            }}
+            className="absolute right-4 bottom-4 bg-primary"
             icon="plus"
+            color="white"
             onPress={() => router.push("/add")}
           />
         </>

@@ -2,7 +2,7 @@
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 import { ActivityIndicator, Button, TextInput } from "react-native-paper";
 import { useModules } from "../context/ModuleContext";
 import { ModuleStatus } from "../types/module";
@@ -35,86 +35,94 @@ export default function AddModuleScreen() {
   };
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 16 }}>
-      <TextInput
-        label="Name"
-        value={name}
-        onChangeText={setName}
-        style={{ marginBottom: 12 }}
-      />
-
-      <Button mode="outlined" onPress={() => setShowDate(true)}>
-        Pick Date
-      </Button>
-      {showDate && (
-        <DateTimePicker
-          value={date}
-          mode="date"
-          display="default"
-          onChange={(_, d) => {
-            setShowDate(false);
-            d && setDate(d);
+    <View className="flex-1 py-14 bg-background text-muted-foreground">
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ padding: 16, minHeight: "100%" }}
+      >
+        <TextInput
+          label="Name"
+          value={name}
+          onChangeText={setName}
+          style={{
+            marginBottom: 10,
           }}
+          className="bg-card text-muted-foreground  border-stone-500"
         />
-      )}
-      <TextInput
-        label="Selected Date"
-        value={date.toLocaleDateString()}
-        editable={false}
-        style={{ marginVertical: 12 }}
-      />
 
-      <Button mode="outlined" onPress={() => setShowTime(true)}>
-        Pick Time
-      </Button>
-      {showTime && (
-        <DateTimePicker
-          value={time}
-          mode="time"
-          display="default"
-          onChange={(_, t) => {
-            setShowTime(false);
-            t && setTime(t);
-          }}
-        />
-      )}
-      <TextInput
-        label="Selected Time"
-        value={time.toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        })}
-        editable={false}
-        style={{ marginVertical: 12 }}
-      />
-
-      <TextInput
-        label="Location"
-        value={location}
-        onChangeText={setLocation}
-        style={{ marginBottom: 12 }}
-      />
-      <TextInput
-        label="Supervisor"
-        value={supervisor}
-        onChangeText={setSupervisor}
-        style={{ marginBottom: 12 }}
-      />
-      <TextInput
-        label="Notes"
-        value={notes}
-        onChangeText={setNotes}
-        multiline
-        style={{ marginBottom: 16 }}
-      />
-
-      {isLoading ? (
-        <ActivityIndicator size="large" style={{ marginTop: 16 }} />
-      ) : (
-        <Button mode="contained" onPress={onSave}>
-          Save
+        <Button mode="outlined" onPress={() => setShowDate(true)}>
+          Pick Date
         </Button>
-      )}
-    </ScrollView>
+        {showDate && (
+          <DateTimePicker
+            value={date}
+            mode="date"
+            display="default"
+            onChange={(_, d) => {
+              setShowDate(false);
+              d && setDate(d);
+            }}
+          />
+        )}
+        <TextInput
+          label="Selected Date"
+          value={date.toLocaleDateString()}
+          editable={false}
+          style={{ marginVertical: 12 }}
+        />
+
+        <Button mode="outlined" onPress={() => setShowTime(true)}>
+          Pick Time
+        </Button>
+        {showTime && (
+          <DateTimePicker
+            value={time}
+            mode="time"
+            display="default"
+            onChange={(_, t) => {
+              setShowTime(false);
+              t && setTime(t);
+            }}
+          />
+        )}
+        <TextInput
+          label="Selected Time"
+          value={time.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+          editable={false}
+          style={{ marginVertical: 12 }}
+        />
+
+        <TextInput
+          label="Location"
+          value={location}
+          onChangeText={setLocation}
+          style={{ marginBottom: 12 }}
+        />
+        <TextInput
+          label="Supervisor"
+          value={supervisor}
+          onChangeText={setSupervisor}
+          style={{ marginBottom: 12 }}
+        />
+        <TextInput
+          label="Notes"
+          value={notes}
+          onChangeText={setNotes}
+          multiline
+          style={{ marginBottom: 16 }}
+        />
+
+        {isLoading ? (
+          <ActivityIndicator size="large" style={{ marginTop: 16 }} />
+        ) : (
+          <Button mode="contained" onPress={onSave}>
+            Save
+          </Button>
+        )}
+      </ScrollView>
+    </View>
   );
 }

@@ -9,7 +9,9 @@ export default function Layout() {
     <Providers>
       <Stack
         initialRouteName="index"
-        screenOptions={{ headerTitleAlign: "center", headerShown: false }}
+        screenOptions={{
+          headerShown: false,
+        }}
       >
         <Stack.Screen name="index" options={{ title: "Timetable" }} />
         <Stack.Screen name="add" options={{ title: "Add Module" }} />
